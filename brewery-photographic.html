@@ -93,6 +93,17 @@ img, video { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-label); font-size: var(--text-xs);
   color: var(--color-muted); letter-spacing: 0.04em;
 }
+/* 差し替え — <figure class="slot ..."> の中に <img>/<video> を置くだけで
+   枠が写真に切り替わる。X もラベルも自動で消える。他は何も触らなくていい。 */
+.slot > img, .slot > video {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.slot:has(> img) , .slot:has(> video) { border-style: solid; border-color: var(--color-rule); }
+.slot:has(> img) .slot__x,   .slot:has(> video) .slot__x   { display: none; }
+.slot:has(> img) .slot__info, .slot:has(> video) .slot__info { display: none; }
+.slot--logo > img { object-fit: contain; padding: var(--space-md); }
+
 .slot--fold  { min-height: 100svh; border: 0; border-bottom: 1px dashed var(--color-rule-2); }
 .slot--21x9  { aspect-ratio: 21 / 9; }
 .slot--16x9  { aspect-ratio: 16 / 9; }
