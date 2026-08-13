@@ -1,6 +1,18 @@
 [
   {
     "date": "2026-08-13",
+    "macrostructure": "Photographic",
+    "macrostructure_alt": "Marquee Hero",
+    "theme": "studied-DNA",
+    "theme_axes": "dark / jp-rounded-gothic+roman-serif / warm",
+    "dna_source": "url: https://okinawabluewhisky.com/",
+    "nav": "N1",
+    "footer": "Ft1",
+    "enrichment": "画像スロット21枠（撮影前提のフレーム）",
+    "brief": "氷川ブリュワリー 醸造所LP · photographic（studied DNA・画像未撮影）"
+  },
+  {
+    "date": "2026-08-13",
     "macrostructure": "Bento Grid",
     "theme": "custom",
     "theme_axes": "dark / jp-gothic / warm",

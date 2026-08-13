@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="ja" data-theme="studied">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>氷川ブリュワリー — 街の中に、醸造所がある。</title>
+<meta name="description" content="さいたま市初のクラフトビール「氷川の杜」。武蔵一宮氷川神社の参道そば、醸造所直結のパブで常時10種ほど。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Serif+JP:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* Hallmark · macrostructure: Photographic · macrostructure_alt: Marquee Hero
+ * H6 hero knobs: image area=full-bleed(fold), caption=lower-left, text overlaid
+ * F6 lineup knobs: card ratio=4/5 portrait, density=3-up, micro-action=none
+ * nav: N1 wordmark + anchor row (knobs: left/right split, text links, sticky=yes)
+ * footer: Ft1 mast-headed (knobs: wordmark=2xl, tagline=serif, links=inline)
+ * theme: studied-DNA (source: url) · source-url: https://okinawabluewhisky.com/
+ *   observed-paper #101010 / #070C22 · observed-accent #0009C9 + gold #B99659
+ *   observed-fonts adobe-caslon-pro + fot-tsukumin-pr6n + Noto Serif SC
+ *   translated → paper oklch(15% 0.008 250) · accent oklch(74% 0.150 70) 琥珀 · gold oklch(74% 0.075 85)
+ *   fonts → EB Garamond + Zen Maru Gothic + Noto Serif JP（無料フォントへ置換）
+ *   rhythm: unknown (URL mode) · studied: yes
+ * enrichment: 画像スロット（撮影前提のフレーム）
+ * motion: fade-in-bottom · slide-loop · link-underline (3) — 参照元と同じ2種＋1
+ * pre-emit critique: P5 H5 E5 S5 R4 V5
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+html {
+  line-break: strict; word-break: normal; overflow-wrap: normal;
+  -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px;
+}
+body {
+  background: var(--color-paper); color: var(--color-ink);
+  font-family: var(--font-body); font-size: var(--text-md); line-height: var(--lh-normal);
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-body); font-weight: 700;
+  font-feature-settings: "palt" 1; line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display); margin: 0;
+}
+.en { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: 0.04em; }
+.mincho { font-family: var(--font-serif); font-feature-settings: "palt" 1; }
+p { margin: 0; }
+ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }
+
+.wrap { max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-gutter); }
+.bp { display: none; }
+@media (min-width: 48rem) { .bp { display: inline; } }
+.num { font-family: var(--font-label); font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+/* ══════════════════════════════════════════════════════
+   画像スロット — ここに写真が入る、と見てわかるための部品
+   ══════════════════════════════════════════════════════ */
+.slot {
+  position: relative; display: grid; place-items: center;
+  background: var(--color-paper-2);
+  border: 1px dashed var(--color-rule-2);
+  overflow: hidden;
+}
+.slot__x { position: absolute; inset: 0; opacity: 0.55; }
+.slot__x::before, .slot__x::after {
+  content: ""; position: absolute; inset: 0;
+}
+.slot__x::before {
+  background: linear-gradient(to bottom right,
+    transparent calc(50% - 0.5px), var(--color-rule) 50%, transparent calc(50% + 0.5px));
+}
+.slot__x::after {
+  background: linear-gradient(to bottom left,
+    transparent calc(50% - 0.5px), var(--color-rule) 50%, transparent calc(50% + 0.5px));
+}
+.slot__info {
+  position: relative; z-index: 1;
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  padding: var(--space-md) var(--space-lg);
+  max-width: min(90%, 32em);
+  text-align: center;
+}
+.slot__id {
+  display: block; font-family: var(--font-label); font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label); color: var(--color-accent); margin-bottom: var(--space-xs);
+}
+.slot__subject { display: block; font-size: var(--text-base); line-height: var(--lh-snug); color: var(--color-ink); }
+.slot__spec {
+  display: block; margin-top: var(--space-sm);
+  font-family: var(--font-label); font-size: var(--text-xs);
+  color: var(--color-muted); letter-spacing: 0.04em;
+}
+.slot--fold  { min-height: 100svh; border: 0; border-bottom: 1px dashed var(--color-rule-2); }
+.slot--21x9  { aspect-ratio: 21 / 9; }
+.slot--16x9  { aspect-ratio: 16 / 9; }
+.slot--3x2   { aspect-ratio: 3 / 2; }
+.slot--4x5   { aspect-ratio: 4 / 5; }
+.slot--1x1   { aspect-ratio: 1 / 1; }
+.slot--logo  { aspect-ratio: 5 / 2; background: var(--color-paper); }
+.slot--logo .slot__info { border: 0; background: none; padding: var(--space-sm); }
+
+/* ══════════════════════════════════════════════════════
+   N1 · sticky nav
+   ══════════════════════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: var(--z-nav);
+  background: var(--color-paper);
+  border-bottom: 1px solid var(--color-rule);
+}
+.nav__in {
+  max-width: var(--page-max); margin-inline: auto; padding: var(--space-sm) var(--page-gutter);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+  min-height: 56px;
+}
+.nav__mark { font-family: var(--font-display); font-size: var(--text-lg); letter-spacing: 0.1em; text-decoration: none; white-space: nowrap; }
+.nav__links { display: none; gap: var(--space-lg); }
+@media (min-width: 60rem) { .nav__links { display: flex; } }
+.nav__links a {
+  font-size: var(--text-sm); text-decoration: none; white-space: nowrap;
+  padding-block: var(--space-xs);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+}
+.nav__links a:hover { border-bottom-color: var(--color-accent); color: var(--color-accent); }
+.nav__cta {
+  display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--space-md);
+  border: 1px solid var(--color-accent); color: var(--color-accent);
+  font-size: var(--text-sm); text-decoration: none; white-space: nowrap;
+  transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+}
+.nav__cta:hover { background: var(--color-accent); color: var(--color-accent-ink); }
+
+/* ══════════════════════════════════════════════════════
+   H6 · photographic fold
+   ══════════════════════════════════════════════════════ */
+.fold { position: relative; }
+.fold__over {
+  position: absolute; inset: auto 0 0 0; z-index: 2;
+  padding: var(--page-gutter);
+  padding-bottom: clamp(var(--space-2xl), 8vh, var(--space-3xl));
+}
+.fold__inner { max-width: var(--page-max); margin-inline: auto; }
+.fold__k {
+  font-family: var(--font-label); font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label); color: var(--color-accent); display: block; margin-bottom: var(--space-md);
+}
+.fold__h { font-size: var(--text-display); text-shadow: 0 2px 24px var(--color-paper); }
+.fold__p { margin-top: var(--space-lg); max-width: 30em; color: var(--color-ink-2); text-shadow: 0 1px 16px var(--color-paper); }
+.fold__scroll {
+  position: absolute; left: 50%; bottom: var(--space-lg); z-index: 2;
+  transform: translateX(-50%);
+  font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   slide-loop marquee
+   ══════════════════════════════════════════════════════ */
+.marq { overflow: hidden; border-bottom: 1px solid var(--color-rule); padding-block: var(--space-sm); }
+.marq__t {
+  display: inline-block; white-space: nowrap; will-change: transform;
+  font-family: var(--font-display); font-size: var(--text-base);
+  letter-spacing: 0.24em; color: var(--color-gold);
+  animation: slide-loop 38s linear infinite;
+}
+@keyframes slide-loop { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ══════════════════════════════════════════════════════
+   sections
+   ══════════════════════════════════════════════════════ */
+.sec { padding-block: var(--section-gap); }
+.sec--tint { background: var(--color-paper-2); }
+.sec__k { display: block; font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: var(--tracking-label); color: var(--color-accent); margin-bottom: var(--space-md); }
+.sec__title { font-size: var(--text-display-s); }
+.sec__lead { margin-top: var(--space-lg); max-width: var(--measure); color: var(--color-ink-2); }
+.sec__lead p + p { margin-top: var(--space-md); }
+.sec__head { margin-bottom: var(--space-2xl); }
+
+.gridA { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); }
+@media (min-width: 48rem) { .gridA { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.gridB { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2xl); align-items: center; }
+@media (min-width: 56rem) { .gridB { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xl); } }
+
+/* lineup */
+.lineup { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+@media (min-width: 34rem) { .lineup { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 56rem) { .lineup { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.beer__n { margin-top: var(--space-md); font-size: var(--text-xl); }
+.beer__r { margin-top: var(--space-2xs); font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: 0.1em; color: var(--color-gold); }
+.beer__d { margin-top: var(--space-sm); font-size: var(--text-base); color: var(--color-neutral); }
+
+/* spec */
+.spec { border-top: 1px solid var(--color-rule-2); }
+.spec__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); padding-block: var(--space-md); border-bottom: 1px solid var(--color-rule); }
+@media (min-width: 40rem) { .spec__row { grid-template-columns: 9em minmax(0, 1fr); gap: var(--space-lg); align-items: baseline; } }
+.spec__k { color: var(--color-muted); font-size: var(--text-base); }
+.spec__v { font-size: var(--text-base); }
+.spec__v a { white-space: nowrap; }
+.spec__foot { margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-muted); max-width: var(--measure); }
+
+/* menu */
+.menu { border-top: 1px solid var(--color-rule-2); }
+.menu__row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-md); padding-block: var(--space-sm); border-bottom: 1px solid var(--color-rule); }
+.menu__p { font-family: var(--font-label); font-variant-numeric: tabular-nums; font-size: var(--text-sm); color: var(--color-muted); white-space: nowrap; }
+
+/* timeline */
+.tl { border-top: 1px solid var(--color-rule-2); }
+.tl__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); padding-block: var(--space-lg); border-bottom: 1px solid var(--color-rule); }
+@media (min-width: 40rem) { .tl__row { grid-template-columns: 7em minmax(0, 1fr); gap: var(--space-xl); } }
+.tl__y { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-gold); }
+.tl__h { font-size: var(--text-lg); margin-bottom: var(--space-2xs); }
+.tl__p { font-size: var(--text-base); color: var(--color-neutral); max-width: var(--measure); }
+
+/* pending block — 捏造しないための明示枠 */
+.pending { border: 1px dashed var(--color-rule-2); padding: var(--space-xl); text-align: center; }
+.pending__k { display: block; font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: var(--tracking-label); color: var(--color-accent); margin-bottom: var(--space-sm); }
+.pending__p { color: var(--color-muted); font-size: var(--text-base); }
+
+/* link + cta */
+.tlink { display: inline-block; margin-top: var(--space-lg); padding-block: var(--space-xs); font-size: var(--text-base); white-space: nowrap; text-decoration: none; border-bottom: 1px solid var(--color-rule-2); transition: border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.tlink:hover { border-bottom-color: var(--color-accent); color: var(--color-accent); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-2xl); }
+.chip { display: inline-flex; align-items: center; min-height: 48px; padding-inline: var(--space-lg); border: 1px solid var(--color-rule-2); font-size: var(--text-base); text-decoration: none; white-space: nowrap; transition: border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.chip--solid { background: var(--color-accent); color: var(--color-accent-ink); border-color: var(--color-accent); }
+.chip--solid:hover { color: var(--color-accent-ink); }
+
+/* footer */
+.foot { border-top: 1px solid var(--color-rule-2); padding-block: var(--space-2xl) var(--space-3xl); }
+.foot__mark { font-family: var(--font-display); font-size: var(--text-2xl); letter-spacing: 0.1em; }
+.foot__tag { margin-top: var(--space-sm); color: var(--color-muted); max-width: var(--measure); font-size: var(--text-base); }
+.foot__nav { margin-top: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); font-size: var(--text-sm); }
+.foot__nav a { white-space: nowrap; text-decoration: none; border-bottom: 1px solid transparent; padding-block: var(--space-2xs); }
+.foot__nav a:hover { border-bottom-color: var(--color-accent); }
+.foot__meta { margin-top: var(--space-xl); font-family: var(--font-label); font-size: var(--text-xs); line-height: 1.9; color: var(--color-muted); max-width: 52em; }
+.foot__meta a { white-space: nowrap; }
+
+/* ══════════════════════════════════════════════════════
+   fade-in-bottom（参照元と同じ型：translateY(50px) + opacity）
+   ══════════════════════════════════════════════════════ */
+[data-r] { opacity: 0; transform: translateY(50px); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); }
+[data-r].is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 150ms !important; }
+  .marq__t { animation: none; }
+  [data-r] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="メイン">
+  <div class="nav__in">
+    <a class="nav__mark" href="#top">HIKAWA</a>
+    <div class="nav__links">
+      <a href="#story">ブランドストーリー</a>
+      <a href="#lineup">ビール</a>
+      <a href="#howto">楽しみ方</a>
+      <a href="#about">醸造所</a>
+      <a href="#access">アクセス</a>
+    </div>
+    <a class="nav__cta" href="tel:0487835123">048-783-5123</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ═══ H6 · photographic fold ═══ -->
+  <section class="fold">
+    <figure class="slot slot--fold">
+      <span class="slot__x" aria-hidden="true"></span>
+      <figcaption class="slot__info">
+        <span class="slot__id">IMG-01 ／ ファーストビュー</span>
+        <span class="slot__subject">醸造所併設パブの外観。夜、灯りがついた状態。または注ぎたてのグラスに光が透ける寄り。</span>
+        <span class="slot__spec">全画面 · 2400×1600px 以上 · 横位置 · 下1/3は文字が乗るので暗めに</span>
+      </figcaption>
+    </figure>
+
+    <div class="fold__over">
+      <div class="fold__inner">
+        <span class="fold__k">SAITAMA CITY — SINCE 2014</span>
+        <h1 class="fold__h">街の中に、<br class="bp">醸造所がある。</h1>
+        <p class="fold__p">さいたま市初のクラフトビール「氷川の杜」。武蔵一宮氷川神社の参道そばで、タンクから数メートルのカウンターに注いでいます。</p>
+      </div>
+    </div>
+    <span class="fold__scroll" aria-hidden="true">SCROLL</span>
+  </section>
+
+  <!-- ═══ slide-loop ═══ -->
+  <div class="marq" aria-hidden="true">
+    <span class="marq__t">HIKAWA BREWERY · SAITAMA · 氷川の杜 · SINCE 2014 · HIKAWA BREWERY · SAITAMA · 氷川の杜 · SINCE 2014 · HIKAWA BREWERY · SAITAMA · 氷川の杜 · SINCE 2014 · </span>
+  </div>
+
+  <!-- ═══ STORY ═══ -->
+  <section class="sec wrap" id="story">
+    <div class="sec__head" data-r>
+      <span class="sec__k">BRAND STORY</span>
+      <h2 class="sec__title mincho">まち起こしから、<br class="bp">始まりました。</h2>
+      <div class="sec__lead">
+        <p>大宮駅東口の大型商業施設が撤退したあと、まちが弱っていくのを心配した地元の仲間が集まりました。何でまち起こしをするか決まらないまま話していたところ、元技術者のオーナーが数年前の醸造体験で自分のレシピを持っていることがわかった。</p>
+        <p>さいたまの名産品と言われて、すぐ出てくるものがなかった。だったら作ろう、というところから始まっています。</p>
+      </div>
+    </div>
+
+    <div class="gridA">
+      <figure class="slot slot--4x5" data-r>
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">IMG-02</span>
+          <span class="slot__subject">創業メンバー／オーナーの人物カット</span>
+          <span class="slot__spec">4:5 · 1600×2000px 以上 · 縦位置</span>
+        </figcaption>
+      </figure>
+      <figure class="slot slot--4x5" data-r>
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">IMG-03</span>
+          <span class="slot__subject">氷川神社の参道。ケヤキ並木の引き</span>
+          <span class="slot__spec">4:5 · 1600×2000px 以上 · 縦位置</span>
+        </figcaption>
+      </figure>
+      <figure class="slot slot--4x5" data-r>
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">IMG-04</span>
+          <span class="slot__subject">仕込みの手元。麦芽をすくう／攪拌する寄り</span>
+          <span class="slot__spec">4:5 · 1600×2000px 以上 · 縦位置</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ VIDEO ═══ -->
+  <section class="sec sec--tint">
+    <div class="wrap">
+      <div class="sec__head" data-r>
+        <span class="sec__k">MOVIE</span>
+        <h2 class="sec__title mincho">仕込みの一日</h2>
+      </div>
+      <figure class="slot slot--16x9" data-r>
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">VID-01 ／ 動画</span>
+          <span class="slot__subject">仕込みからサーブまでを追った60〜90秒。ポスター画像も1枚必要です。</span>
+          <span class="slot__spec">16:9 · 1920×1080px · MP4（H.264）· ポスター 1920×1080px</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ LINEUP ═══ -->
+  <section class="sec wrap" id="lineup">
+    <div class="sec__head" data-r>
+      <span class="sec__k">LINE UP</span>
+      <h2 class="sec__title mincho">氷川の杜</h2>
+      <div class="sec__lead">
+        <p>地域の守り神である氷川神社から発想した銘柄です。幽玄な雰囲気からアンバーエール、参道の周りの活気ある街からゴールデンエール。原料には地元の農作物を使い、地元企業とも組んでいます。</p>
+      </div>
+    </div>
+
+    <div class="lineup">
+      <article data-r>
+        <figure class="slot slot--4x5">
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-05</span>
+            <span class="slot__subject">Hana — グラス注ぎ or ボトル単体</span>
+            <span class="slot__spec">4:5 · 1600×2000px · 背景は暗色で統一</span>
+          </figcaption>
+        </figure>
+        <h3 class="beer__n">Hana</h3>
+        <p class="beer__r">GOLDEN ALE</p>
+        <p class="beer__d">神社と、その周りの活気ある街をイメージした一杯。</p>
+      </article>
+
+      <article data-r>
+        <figure class="slot slot--4x5">
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-06</span>
+            <span class="slot__subject">Ren / Sui — グラス注ぎ or ボトル単体</span>
+            <span class="slot__spec">4:5 · 1600×2000px · 背景は暗色で統一</span>
+          </figcaption>
+        </figure>
+        <h3 class="beer__n">Ren / Sui</h3>
+        <p class="beer__r">AMERICAN PALE ALE</p>
+        <p class="beer__d">ホップの香りを立てたアメリカンペールエール。</p>
+      </article>
+
+      <article data-r>
+        <figure class="slot slot--4x5">
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-07</span>
+            <span class="slot__subject">アンバーエール — グラス注ぎ or ボトル単体</span>
+            <span class="slot__spec">4:5 · 1600×2000px · 背景は暗色で統一</span>
+          </figcaption>
+        </figure>
+        <h3 class="beer__n">アンバーエール</h3>
+        <p class="beer__r">AMBER ALE</p>
+        <p class="beer__d">氷川神社の幽玄な雰囲気からつくった、最初の一本。</p>
+      </article>
+
+      <article data-r>
+        <figure class="slot slot--4x5">
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-08</span>
+            <span class="slot__subject">Shuu — グラス注ぎ or ボトル単体</span>
+            <span class="slot__spec">4:5 · 1600×2000px · 背景は暗色で統一</span>
+          </figcaption>
+        </figure>
+        <h3 class="beer__n">Shuu</h3>
+        <p class="beer__r">BROWN ALE</p>
+        <p class="beer__d">焙煎した麦芽の香ばしさが立つブラウンエール。</p>
+      </article>
+
+      <article data-r>
+        <figure class="slot slot--4x5">
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-09</span>
+            <span class="slot__subject">季節の樽 — タップハンドルの列でも可</span>
+            <span class="slot__spec">4:5 · 1600×2000px · 背景は暗色で統一</span>
+          </figcaption>
+        </figure>
+        <h3 class="beer__n">季節の樽</h3>
+        <p class="beer__r">SEASONAL</p>
+        <p class="beer__d">季節ごとに入れ替わります。常時10種ほど。</p>
+      </article>
+
+      <article data-r>
+        <figure class="slot slot--4x5">
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-10</span>
+            <span class="slot__subject">4本詰合せ（ギフト箱）</span>
+            <span class="slot__spec">4:5 · 1600×2000px · 背景は暗色で統一</span>
+          </figcaption>
+        </figure>
+        <h3 class="beer__n">4本詰合せ</h3>
+        <p class="beer__r">GIFT SET</p>
+        <p class="beer__d">さいたま推奨土産品の金賞を受けています。</p>
+      </article>
+    </div>
+
+    <a class="tlink" href="https://hikawa-brewery.com/craft-beer-menu" rel="noopener">今週つながっている樽を見る →</a>
+  </section>
+
+  <!-- ═══ 他との違い ═══ -->
+  <section class="sec sec--tint">
+    <div class="wrap gridB">
+      <div data-r>
+        <span class="sec__k">WHAT'S DIFFERENT</span>
+        <h2 class="sec__title mincho">タンクから、<br class="bp">数メートル。</h2>
+        <div class="sec__lead">
+          <p>醸造所とパブが直結しています。運ばない、置かない、待たせない。だから状態のいいものがそのまま出せます。</p>
+          <p>原料には地元の農作物を取り入れ、地元企業とも組んでいます。刈り取りから関わる回もあります。</p>
+        </div>
+      </div>
+      <figure class="slot slot--3x2" data-r>
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">IMG-11</span>
+          <span class="slot__subject">発酵タンクとカウンターが同じ画角に入る引き。「直結」が一枚で伝わる絵</span>
+          <span class="slot__spec">3:2 · 2400×1600px 以上 · 横位置</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ メディア・受賞 ═══ -->
+  <section class="sec wrap">
+    <div class="sec__head" data-r>
+      <span class="sec__k">MEDIA &amp; AWARD</span>
+      <h2 class="sec__title mincho">掲載と受賞</h2>
+    </div>
+    <div class="gridA" data-r>
+      <figure class="slot slot--logo">
+        <figcaption class="slot__info">
+          <span class="slot__id">LOGO-01</span>
+          <span class="slot__subject">さいたま推奨土産品 金賞</span>
+          <span class="slot__spec">SVG または PNG 透過 · 高さ 80px 相当</span>
+        </figcaption>
+      </figure>
+      <figure class="slot slot--logo">
+        <figcaption class="slot__info">
+          <span class="slot__id">LOGO-02</span>
+          <span class="slot__subject">高島屋オンラインストア 取扱</span>
+          <span class="slot__spec">SVG または PNG 透過 · 高さ 80px 相当</span>
+        </figcaption>
+      </figure>
+      <figure class="slot slot--logo">
+        <figcaption class="slot__info">
+          <span class="slot__id">LOGO-03</span>
+          <span class="slot__subject">さいたま市ふるさと納税 返礼品</span>
+          <span class="slot__spec">SVG または PNG 透過 · 高さ 80px 相当</span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="spec__foot" style="margin-top: var(--space-lg);">ロゴの掲載は各社の使用許諾が要ります。取れないものはテキスト表記に落とします。</p>
+  </section>
+
+  <!-- ═══ 推薦の声 ═══ -->
+  <section class="sec sec--tint">
+    <div class="wrap">
+      <div class="sec__head" data-r>
+        <span class="sec__k">VOICES</span>
+        <h2 class="sec__title mincho">飲んだ人の言葉</h2>
+      </div>
+      <div class="pending" data-r>
+        <span class="pending__k">取材待ち</span>
+        <p class="pending__p">ここには実際のコメントが入ります。書き手がいない推薦文は置きません。<br>常連の方、取引先、イベントで会った人 — 3件あれば成立します。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 楽しみ方 ═══ -->
+  <section class="sec wrap" id="howto">
+    <div class="sec__head" data-r>
+      <span class="sec__k">HOW TO ENJOY</span>
+      <h2 class="sec__title mincho">合わせるもの</h2>
+      <div class="sec__lead"><p>自家製の燻製が中心です。ほかに旬の料理と、月替わりのプレートメニュー。</p></div>
+    </div>
+
+    <div class="gridB">
+      <figure class="slot slot--3x2" data-r>
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">IMG-12</span>
+          <span class="slot__subject">燻製盛り合わせとビールが同じ画面に入るテーブル俯瞰</span>
+          <span class="slot__spec">3:2 · 2400×1600px 以上 · 横位置</span>
+        </figcaption>
+      </figure>
+      <div data-r>
+        <div class="menu">
+          <div class="menu__row"><span>ソーセージ4種盛り</span><span class="menu__p">¥1,580</span></div>
+          <div class="menu__row"><span>自家製ベーコンのグリル</span><span class="menu__p">¥1,180</span></div>
+          <div class="menu__row"><span>自家製燻製盛り合わせ</span><span class="menu__p">¥990</span></div>
+          <div class="menu__row"><span>ムール貝の白ワイン蒸し（小）</span><span class="menu__p">¥970</span></div>
+          <div class="menu__row"><span>ビアフライドチキン</span><span class="menu__p">¥780</span></div>
+        </div>
+        <a class="tlink" href="https://hikawa-brewery.com/food-menu" rel="noopener">フードメニュー全体 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 醸造所 ═══ -->
+  <section class="sec sec--tint" id="about">
+    <div class="wrap">
+      <div class="sec__head" data-r>
+        <span class="sec__k">BREWERY</span>
+        <h2 class="sec__title mincho">氷川の杜という場所</h2>
+        <div class="sec__lead"><p>気軽に立ち寄れるコミュニティスペースとして開けています。ひとりでも、待ち合わせでも。</p></div>
+      </div>
+
+      <figure class="slot slot--21x9" data-r style="margin-bottom: var(--space-lg);">
+        <span class="slot__x" aria-hidden="true"></span>
+        <figcaption class="slot__info">
+          <span class="slot__id">IMG-13</span>
+          <span class="slot__subject">店内の引き。カウンターと客席、営業中の空気が入っているもの</span>
+          <span class="slot__spec">21:9 · 2800×1200px 以上 · 横位置 · パノラマ</span>
+        </figcaption>
+      </figure>
+
+      <div class="gridA">
+        <figure class="slot slot--1x1" data-r>
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info"><span class="slot__id">IMG-14</span><span class="slot__subject">タップハンドルの列</span><span class="slot__spec">1:1 · 1600×1600px</span></figcaption>
+        </figure>
+        <figure class="slot slot--1x1" data-r>
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info"><span class="slot__id">IMG-15</span><span class="slot__subject">醸造設備／ケトルまわり</span><span class="slot__spec">1:1 · 1600×1600px</span></figcaption>
+        </figure>
+        <figure class="slot slot--1x1" data-r>
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info"><span class="slot__id">IMG-16</span><span class="slot__subject">麦刈りイベントの様子</span><span class="slot__spec">1:1 · 1600×1600px</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 沿革 ═══ -->
+  <section class="sec wrap">
+    <div class="sec__head" data-r>
+      <span class="sec__k">HISTORY</span>
+      <h2 class="sec__title mincho">沿革</h2>
+    </div>
+    <dl class="tl" data-r>
+      <div class="tl__row">
+        <dt class="tl__y">2014</dt>
+        <dd><p class="tl__h">大宮・高鼻町で開業</p><p class="tl__p">さいたま市初のクラフトビール醸造所として、氷川神社の参道そばに醸造所併設のパブを開く。</p></dd>
+      </div>
+      <div class="tl__row">
+        <dt class="tl__y">—</dt>
+        <dd><p class="tl__h">「氷川の杜」シリーズ</p><p class="tl__p">氷川神社から発想した銘柄を展開。4本詰合せがさいたま推奨土産品の金賞を受ける。</p></dd>
+      </div>
+      <div class="tl__row">
+        <dt class="tl__y">NEXT</dt>
+        <dd><p class="tl__h">岩槻に二つ目の醸造所</p><p class="tl__p">人形の町として370年やってきた岩槻に、もうひとつ建てます。着工前です。決まったことからここに書きます。</p></dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ═══ ACCESS ═══ -->
+  <section class="sec sec--tint" id="access">
+    <div class="wrap">
+      <div class="sec__head" data-r>
+        <span class="sec__k">ACCESS</span>
+        <h2 class="sec__title mincho">行き方と、開いている時間</h2>
+      </div>
+
+      <div class="gridB">
+        <div data-r>
+          <dl class="spec">
+            <div class="spec__row"><dt class="spec__k">営業時間</dt><dd class="spec__v">水・木・金 <span class="num">17:00–22:30</span><br>土 <span class="num">12:00–22:30</span><br>日 <span class="num">12:00–21:00</span><br>L.O. は閉店30分前</dd></div>
+            <div class="spec__row"><dt class="spec__k">定休日</dt><dd class="spec__v">月曜・火曜</dd></div>
+            <div class="spec__row"><dt class="spec__k">電話</dt><dd class="spec__v"><a href="tel:0487835123" class="num">048-783-5123</a></dd></div>
+            <div class="spec__row"><dt class="spec__k">住所</dt><dd class="spec__v">〒330-0803 さいたま市大宮区高鼻町 1-36-1</dd></div>
+            <div class="spec__row"><dt class="spec__k">アクセス</dt><dd class="spec__v">JR大宮駅から徒歩<span class="num">7</span>分<br>氷川参道 二の鳥居から徒歩<span class="num">2</span>分</dd></div>
+          </dl>
+          <p class="spec__foot">醸造やイベントの都合で営業時間が変わったり、お休みになることがあります。行く前に公式カレンダーかSNSを見てください。</p>
+
+          <div class="chips">
+            <a class="chip chip--solid" href="tel:0487835123">電話で確認する</a>
+            <a class="chip" href="https://maps.google.com/?q=埼玉県さいたま市大宮区高鼻町1-36-1" rel="noopener">地図を開く</a>
+            <a class="chip" href="https://www.instagram.com/hikawabrewery/" rel="noopener">Instagram</a>
+          </div>
+        </div>
+
+        <figure class="slot slot--4x5" data-r>
+          <span class="slot__x" aria-hidden="true"></span>
+          <figcaption class="slot__info">
+            <span class="slot__id">IMG-17</span>
+            <span class="slot__subject">店の入口。看板と暖簾が見える、目印になる一枚</span>
+            <span class="slot__spec">4:5 · 1600×2000px 以上 · 縦位置</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__mark">HIKAWA BREWERY</p>
+    <p class="foot__tag mincho">人と人、地域と人、地域とブリュワリー。あなたの今日がちょっと幸せになるように。</p>
+    <nav class="foot__nav" aria-label="フッター">
+      <a href="#story">ブランドストーリー</a>
+      <a href="#lineup">ビール</a>
+      <a href="#howto">楽しみ方</a>
+      <a href="#about">醸造所</a>
+      <a href="#access">アクセス</a>
+      <a href="https://hikawa-brewery.com/" rel="noopener">公式サイト</a>
+      <a href="https://www.instagram.com/hikawabrewery/" rel="noopener">Instagram</a>
+    </nav>
+    <p class="foot__meta">
+      株式会社 氷川ブリュワリー ／ 〒330-0803 さいたま市大宮区高鼻町 1-36-1 ／
+      <a href="tel:0487835123">048-783-5123</a> ／ 月・火 定休<br>
+      営業情報・銘柄・フード価格は<a href="https://hikawa-brewery.com/" rel="noopener">公式サイト</a>の掲載による（2026-08 時点）。掲載前に最新情報の確認を推奨。<br>
+      構成は okinawabluewhisky.com を参照して抽出した設計DNAにもとづく。レイアウト・文言・画像はいずれも独自制作。
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var t = document.querySelectorAll('[data-r]');
+  if (reduce || !('IntersectionObserver' in window)) {
+    t.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  t.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

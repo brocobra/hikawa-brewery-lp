@@ -54,6 +54,56 @@
 }
 
 /* ──────────────────────────────────────────────────────
+   STUDIED — okinawabluewhisky.com から抽出したDNA
+   hallmark study (URL mode) · 2026-08-13
+   元: paper #101010 / #070C22 · 青一族 #0009C9 #1F549B #4967D8 · 金 #B99659
+       Latin=adobe-caslon-pro（ローマン明朝）／和文=fot-tsukumin-pr6n（丸ゴシック）
+   翻訳: 暗い紙と金は保持。ブランドの青 → 氷川ブリュワリーの琥珀に置換。
+       書体は役割を保持したまま無料フォントへ（Adobe Fonts依存を外す）。
+   ────────────────────────────────────────────────────── */
+
+[data-theme="studied"] {
+  --color-paper:      oklch(15%  0.008 250);
+  --color-paper-2:    oklch(19%  0.010 250);
+  --color-paper-3:    oklch(24%  0.012 250);
+  --color-rule:       oklch(32%  0.010 250);
+  --color-rule-2:     oklch(45%  0.012 250);
+  --color-muted:      oklch(62%  0.010 250);
+  --color-neutral:    oklch(76%  0.008 250);
+  --color-ink-2:      oklch(88%  0.006 250);
+  --color-ink:        oklch(97%  0.004 250);
+  --color-accent:     oklch(74%  0.150 70);   /* 琥珀 — 元の青の位置 */
+  --color-accent-ink: oklch(15%  0.008 250);
+  --color-gold:       oklch(74%  0.075 85);   /* #B99659 相当 — 小面積の効かせ役 */
+  --color-focus:      oklch(78%  0.155 70);
+
+  --font-display: "EB Garamond", "Adobe Caslon Pro", ui-serif, Georgia, serif;
+  --font-body:    "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+  --font-serif:   "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  --font-label:   "IBM Plex Mono", ui-monospace, monospace;
+
+  --display-weight: 500;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-display:   clamp(2.25rem, 4.6vw + 0.9rem, 5.25rem);
+  --text-display-s: clamp(1.625rem, 2.4vw + 0.8rem, 2.75rem);
+
+  --tracking-display: 0.02em;
+  --tracking-tight:   0;
+  --tracking-label:   0.2em;
+
+  --page-max: 72rem;
+  --radius-card: 0;
+  --radius-pill: 0;
+}
+
+/* ──────────────────────────────────────────────────────
    ATELIER — 案1「胡粉」
    冷たい生成り紙 × 焦茶の墨。アクセントはほぼ墨。色で叫がない。
    ────────────────────────────────────────────────────── */
