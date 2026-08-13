@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ja" data-theme="andon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>氷川ブリュワリー — さいたま市初のクラフトビール醸造所</title>
+<meta name="description" content="大宮・氷川神社の参道そば、醸造所直結のパブ「氷川の杜」。常時10種ほどのクラフトビール。JR大宮駅から徒歩7分。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Shippori+Mincho:wght@400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Bento Grid · theme: andon (custom)
+ * custom theme · vibe: "夜の街道、行灯、琥珀、土間"
+ *   paper oklch(14% 0.012 55) · accent oklch(72% 0.145 68) · axes: dark / jp-gothic / warm
+ * nav: N6 newspaper masthead (knobs: issue=above, wordmark=xl, rule=double)
+ * hero: H4 stat-led (knobs: tabular display, qualifier=below, secondary=row of four)
+ * section head: S5 bottom-anchored · feature: F1 bento (knobs: tiles=8, spans=irregular, border=hairline all)
+ * cta: C4 sticky bottom bar (knobs: reveal=after fold, anchored=viewport bottom, shadow=hairline)
+ * footer: Ft4 dense colophon (knobs: monospace, paragraphs, includes date)
+ * enrichment: none — 液色の帯のみ（Tier-A CSS）
+ * tone: editorial · audience: 40代以上・味と背景を吟味する層
+ * motion: tile-rise · bar-slide · chip-outline (3)
+ * pre-emit critique: P5 H5 E5 S5 R4 V5
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+html { line-break: strict; word-break: normal; overflow-wrap: normal; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+  padding-bottom: 92px;            /* sticky bar の逃げ */
+}
+@media (min-width: 48rem) { body { padding-bottom: 76px; } }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-feature-settings: "palt" 1;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+p { margin: 0; }
+ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+
+.wrap { max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-gutter); }
+.bp { display: none; }
+@media (min-width: 48rem) { .bp { display: inline; } }
+.num { font-family: var(--font-label); font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+/* ── N6 · masthead ─────────────────────────────────── */
+.mast { border-bottom: 3px double var(--color-rule-2); padding-block: var(--space-lg) var(--space-md); text-align: center; }
+.mast__issue { font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: var(--tracking-label); color: var(--color-muted); margin-bottom: var(--space-sm); }
+.mast__mark {
+  display: inline-block; font-size: clamp(1.375rem, 3vw + 0.6rem, 1.875rem); font-weight: 900;
+  letter-spacing: 0.1em; font-feature-settings: "palt" 1; text-decoration: none; white-space: nowrap;
+}
+
+/* ── H4 · stat-led hero ────────────────────────────── */
+.hero { padding-block: var(--space-3xl) var(--space-2xl); }
+.hero__n {
+  font-family: var(--font-label); font-weight: 500; font-variant-numeric: tabular-nums;
+  font-size: clamp(4rem, 17vw, 11rem); line-height: 0.9; letter-spacing: -0.02em;
+  color: var(--color-accent);
+}
+.hero__q { margin-top: var(--space-lg); font-size: var(--text-2xl); font-family: var(--font-display); font-weight: 700; font-feature-settings: "palt" 1; max-width: 18em; }
+.hero__p { margin-top: var(--space-lg); max-width: var(--measure); color: var(--color-ink-2); }
+
+.stats {
+  margin-top: var(--space-2xl);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: var(--rule-fine) solid var(--color-rule);
+}
+@media (min-width: 48rem) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.stat { padding: var(--space-md) var(--space-md) var(--space-md) 0; border-bottom: var(--rule-hair) solid var(--color-rule); }
+.stat__v { font-size: var(--text-xl); font-family: var(--font-display); font-weight: 700; font-feature-settings: "palt" 1; }
+.stat__k { display: block; margin-top: var(--space-2xs); font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--color-muted); }
+
+/* ── F1 · bento ────────────────────────────────────── */
+.bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+  padding-block: var(--space-2xl) var(--section-gap);
+}
+@media (min-width: 40rem) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 60rem) { .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-lg); } }
+
+.tile {
+  border: var(--rule-hair) solid var(--color-rule);
+  background: var(--color-paper-2);
+  padding: var(--space-lg);
+  display: flex; flex-direction: column;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+}
+.tile.is-in { opacity: 1; transform: none; }
+.tile__k { display: block; font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: var(--tracking-label); color: var(--color-muted); margin-bottom: var(--space-md); }
+.tile__h { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
+.tile__p { font-size: var(--text-base); color: var(--color-ink-2); }
+.tile__a {
+  display: inline-block; margin-top: auto; padding-top: var(--space-lg);
+  font-size: var(--text-base); white-space: nowrap; text-decoration: none;
+  color: var(--color-accent);
+  transition: opacity var(--dur-short) var(--ease-out);
+}
+.tile__a:hover { opacity: 0.7; }
+
+@media (min-width: 60rem) {
+  .tile--beer  { grid-column: span 2; grid-row: span 2; }
+  .tile--pub   { grid-column: span 2; }
+  .tile--food  { grid-column: span 2; }
+  .tile--next  { grid-column: span 2; }
+}
+@media (min-width: 40rem) and (max-width: 59.999rem) {
+  .tile--beer { grid-column: span 2; }
+  .tile--next { grid-column: span 2; }
+}
+
+/* 液色の帯 · Tier-A CSS */
+.taps { display: grid; gap: var(--space-sm); margin-block: var(--space-md) var(--space-lg); }
+.tap { display: grid; grid-template-columns: 3px minmax(0, 1fr) auto; gap: var(--space-md); align-items: baseline; padding-bottom: var(--space-sm); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.tap__c { align-self: stretch; }
+.tap__n { font-size: var(--text-base); font-weight: 700; }
+.tap__s { font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--color-muted); white-space: nowrap; }
+
+.hours { font-size: var(--text-base); }
+.hours dt { font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--color-muted); margin-top: var(--space-sm); }
+.hours dd { margin-top: var(--space-3xs); }
+
+.foodlist { margin-top: var(--space-sm); }
+.foodlist div { display: flex; justify-content: space-between; gap: var(--space-md); padding-block: var(--space-2xs); border-bottom: var(--rule-hair) solid var(--color-rule); font-size: var(--text-base); }
+.foodlist span:last-child { font-family: var(--font-label); font-variant-numeric: tabular-nums; font-size: var(--text-sm); color: var(--color-muted); white-space: nowrap; }
+
+.tile--next { border-color: var(--color-rule-2); }
+.tile--next .tile__h { color: var(--color-accent); }
+
+/* ── S5 · bottom-anchored section head ─────────────── */
+.story { border-top: var(--rule-fine) solid var(--color-rule-2); padding-block: var(--section-gap); }
+.story__body { max-width: var(--measure); }
+.story__body p + p { margin-top: var(--space-md); }
+.story__body p { color: var(--color-ink-2); }
+.story__head { margin-top: var(--space-2xl); padding-top: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule); }
+.story__t { font-size: var(--text-display-s); }
+.story__k { display: block; margin-top: var(--space-sm); font-family: var(--font-label); font-size: var(--text-xs); letter-spacing: var(--tracking-label); color: var(--color-muted); }
+
+/* ── C4 · sticky bottom bar ────────────────────────── */
+.bar {
+  position: fixed; inset: auto 0 0 0; z-index: var(--z-nav);
+  background: var(--color-paper);
+  border-top: var(--rule-fine) solid var(--color-rule-2);
+  transform: translateY(100%);
+  transition: transform var(--dur-long) var(--ease-out);
+}
+.bar.is-on { transform: none; }
+.bar__in {
+  max-width: var(--page-max); margin-inline: auto;
+  padding: var(--space-sm) var(--page-gutter);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm) var(--space-md);
+}
+.bar__t { font-size: var(--text-sm); color: var(--color-ink-2); }
+.bar__t b { color: var(--color-accent); font-weight: 700; }
+.bar__cta {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  min-height: 44px; padding-inline: var(--space-lg);
+  border: var(--rule-fine) solid var(--color-accent); border-radius: var(--radius-pill);
+  color: var(--color-accent); text-decoration: none; font-size: var(--text-base);
+  white-space: nowrap;
+  transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+}
+.bar__cta:hover { background: var(--color-accent); color: var(--color-accent-ink); }
+
+/* ── Ft4 · dense colophon ──────────────────────────── */
+.colo {
+  border-top: 3px double var(--color-rule-2);
+  padding-block: var(--space-2xl) var(--space-3xl);
+  font-family: var(--font-label); font-size: var(--text-xs); line-height: 1.9; color: var(--color-muted);
+}
+.colo b { color: var(--color-ink-2); font-weight: 500; }
+.colo a { color: var(--color-ink-2); white-space: nowrap; }
+.colo__block { max-width: 52em; }
+.colo__block + .colo__block { margin-top: var(--space-lg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 150ms !important; }
+  .tile { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="mast__issue">武蔵一宮氷川神社 参道 ／ さいたま市大宮区高鼻町</p>
+    <a class="mast__mark" href="#top">氷川ブリュワリー</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- H4 · stat-led -->
+  <section class="hero wrap">
+    <p class="hero__n">2014</p>
+    <h1 class="hero__q">さいたま市初の、<br class="bp">クラフトビール醸造所です。</h1>
+    <p class="hero__p">氷川神社の参道そばで醸造所とパブをつないでいます。タンクから数メートルのカウンターで、そのまま注ぎます。</p>
+
+    <div class="stats">
+      <div class="stat"><p class="stat__v">10種ほど</p><span class="stat__k">ON TAP</span></div>
+      <div class="stat"><p class="stat__v">徒歩7分</p><span class="stat__k">FROM OMIYA STN.</span></div>
+      <div class="stat"><p class="stat__v">徒歩2分</p><span class="stat__k">FROM 二ノ鳥居</span></div>
+      <div class="stat"><p class="stat__v">月・火</p><span class="stat__k">CLOSED</span></div>
+    </div>
+  </section>
+
+  <!-- F1 · bento -->
+  <div class="wrap">
+    <div class="bento">
+
+      <article class="tile tile--beer" data-tile>
+        <span class="tile__k">CRAFT BEER</span>
+        <h2 class="tile__h">氷川の杜</h2>
+        <p class="tile__p">地域の守り神である氷川神社から発想した銘柄です。幽玄な雰囲気からアンバーエール、参道の周りの活気ある街からゴールデンエール。原料には地元の農作物を使っています。</p>
+
+        <div class="taps">
+          <div class="tap"><span class="tap__c" style="background: var(--beer-golden)"></span><span class="tap__n">Hana</span><span class="tap__s">GOLDEN</span></div>
+          <div class="tap"><span class="tap__c" style="background: var(--beer-pale)"></span><span class="tap__n">Ren / Sui</span><span class="tap__s">AMERICAN PALE</span></div>
+          <div class="tap"><span class="tap__c" style="background: var(--beer-amber)"></span><span class="tap__n">アンバーエール</span><span class="tap__s">AMBER</span></div>
+          <div class="tap"><span class="tap__c" style="background: var(--beer-brown)"></span><span class="tap__n">Shuu</span><span class="tap__s">BROWN</span></div>
+          <div class="tap"><span class="tap__c" style="background: var(--color-rule-2)"></span><span class="tap__n">季節の樽</span><span class="tap__s">SEASONAL</span></div>
+        </div>
+
+        <p class="tile__p">常時10種ほど。季節で入れ替わります。</p>
+        <a class="tile__a" href="https://hikawa-brewery.com/craft-beer-menu" rel="noopener">今週のタップを見る →</a>
+      </article>
+
+      <article class="tile tile--pub" data-tile>
+        <span class="tile__k">TAPROOM</span>
+        <h2 class="tile__h">氷川の杜</h2>
+        <p class="tile__p">醸造所直結のパブ。ひとりでも、待ち合わせでも入れるコミュニティスペースとして開けています。</p>
+      </article>
+
+      <article class="tile" data-tile>
+        <span class="tile__k">HOURS</span>
+        <h2 class="tile__h">営業時間</h2>
+        <dl class="hours">
+          <dt>水・木・金</dt><dd class="num">17:00–22:30</dd>
+          <dt>土</dt><dd class="num">12:00–22:30</dd>
+          <dt>日</dt><dd class="num">12:00–21:00</dd>
+          <dt>定休</dt><dd>月曜・火曜</dd>
+        </dl>
+        <p class="tile__p" style="margin-top: var(--space-md);">L.O. は閉店30分前。</p>
+      </article>
+
+      <article class="tile" data-tile>
+        <span class="tile__k">ACCESS</span>
+        <h2 class="tile__h">行き方</h2>
+        <p class="tile__p">〒330-0803<br>さいたま市大宮区高鼻町 1-36-1</p>
+        <p class="tile__p" style="margin-top: var(--space-sm);">JR大宮駅から徒歩<span class="num">7</span>分<br>氷川参道 二の鳥居から徒歩<span class="num">2</span>分</p>
+        <a class="tile__a" href="https://maps.google.com/?q=埼玉県さいたま市大宮区高鼻町1-36-1" rel="noopener">地図で開く →</a>
+      </article>
+
+      <article class="tile tile--food" data-tile>
+        <span class="tile__k">FOOD</span>
+        <h2 class="tile__h">自家製の燻製が中心です</h2>
+        <div class="foodlist">
+          <div><span>ソーセージ4種盛り</span><span>¥1,580</span></div>
+          <div><span>自家製ベーコンのグリル</span><span>¥1,180</span></div>
+          <div><span>自家製燻製盛り合わせ</span><span>¥990</span></div>
+          <div><span>ビアフライドチキン</span><span>¥780</span></div>
+        </div>
+        <a class="tile__a" href="https://hikawa-brewery.com/food-menu" rel="noopener">フードメニュー →</a>
+      </article>
+
+      <article class="tile" data-tile>
+        <span class="tile__k">EVENTS</span>
+        <h2 class="tile__h">出店と麦刈り</h2>
+        <p class="tile__p">市内のイベントに出しています。原料の麦を刈る回もあります。</p>
+        <a class="tile__a" href="https://hikawa-brewery.com/category/events" rel="noopener">予定を見る →</a>
+      </article>
+
+      <article class="tile" data-tile>
+        <span class="tile__k">GIFT</span>
+        <h2 class="tile__h">4本詰合せ</h2>
+        <p class="tile__p">「氷川の杜」シリーズの詰合せは、さいたま推奨土産品の金賞を受けています。ふるさと納税の返礼品にも。</p>
+        <a class="tile__a" href="https://www.takashimaya.co.jp/shopping/product.html?p_cd=0001234044&amp;sub_cd=001" rel="noopener">贈りものに →</a>
+      </article>
+
+      <article class="tile tile--next" data-tile>
+        <span class="tile__k">NEXT</span>
+        <h2 class="tile__h">二つ目の醸造所を、岩槻に</h2>
+        <p class="tile__p">人形の町として370年やってきた岩槻に、もうひとつ建てます。着工前です。決まったことからここに書きます。</p>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- S5 · bottom-anchored -->
+  <section class="story wrap" aria-labelledby="s-why">
+    <div class="story__body">
+      <p>大宮駅東口の大型商業施設が撤退したあと、まちが弱っていくのを心配した地元の仲間が集まりました。何でまち起こしをするか決まらないまま話し合っていたところ、元技術者のオーナーが数年前の醸造体験で自分のレシピを持っていることがわかった。</p>
+      <p>さいたまの名産品と言われて、すぐ出てくるものがなかった。だったら作ろう、というところから始まっています。</p>
+      <p>ビールの原料には地元の農作物を入れ、地元企業とも組む。誇れる名産品にする、という最初の目標は今も変わっていません。</p>
+    </div>
+    <div class="story__head">
+      <h2 class="story__t" id="s-why">まち起こしで、始めました</h2>
+      <span class="story__k">SINCE 2014 — SAITAMA CITY</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colo">
+  <div class="wrap">
+    <div class="colo__block">
+      <b>株式会社 氷川ブリュワリー</b> ／ 〒330-0803 さいたま市大宮区高鼻町 1-36-1 ／
+      <a href="tel:0487835123">048-783-5123</a> ／ JR大宮駅から徒歩7分、氷川参道 二の鳥居から徒歩2分 ／
+      水〜金 17:00–22:30、土 12:00–22:30、日 12:00–21:00、月・火 定休、L.O. 閉店30分前
+    </div>
+    <div class="colo__block">
+      <b>醸造やイベントの都合で営業時間が変わることがあります。</b> 最新の情報は
+      <a href="https://hikawa-brewery.com/access" rel="noopener">公式カレンダー</a>、
+      <a href="https://www.instagram.com/hikawabrewery/" rel="noopener">Instagram</a>、
+      <a href="https://www.facebook.com/hikawa.brewery" rel="noopener">Facebook</a> で。
+    </div>
+    <div class="colo__block">
+      <b>岩槻醸造所</b> ／ さいたま市岩槻区 ／ 着工前 ／ 決まり次第このページを更新します。
+    </div>
+    <div class="colo__block">
+      <b>出典</b> ／ 営業情報・銘柄・フード価格は
+      <a href="https://hikawa-brewery.com/" rel="noopener">公式サイト</a> の掲載による（2026-08 時点）。掲載前に最新情報の確認を推奨。
+    </div>
+  </div>
+</footer>
+
+<!-- C4 · sticky bottom bar -->
+<div class="bar" id="bar">
+  <div class="bar__in">
+    <p class="bar__t">水〜日 営業／<b>月・火 定休</b>　L.O. は閉店30分前</p>
+    <a class="bar__cta" href="tel:0487835123">048-783-5123 に電話</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tiles = document.querySelectorAll('[data-tile]');
+  if (reduce || !('IntersectionObserver' in window)) {
+    tiles.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e, i) {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = (i * 50) + 'ms';
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+    tiles.forEach(function (el) { io.observe(el); });
+  }
+
+  // sticky bar — after fold
+  var bar = document.getElementById('bar');
+  var onScroll = function () {
+    if (window.scrollY > window.innerHeight * 0.6) { bar.classList.add('is-on'); }
+    else { bar.classList.remove('is-on'); }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+
+</body>
+</html>

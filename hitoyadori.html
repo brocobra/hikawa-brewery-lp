@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ja" data-theme="andon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日光へ行くはずだった。— 氷川ブリュワリー 岩槻醸造所</title>
+<meta name="description" content="通り道が目的地になった町がある。氷川ブリュワリーは、二つ目の醸造所を岩槻に建てます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Shippori+Mincho:wght@400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Narrative Workflow · theme: andon (custom)
+ * custom theme · vibe: "夜の街道、行灯、琥珀、土間"
+ *   paper oklch(14% 0.012 55) · accent oklch(72% 0.145 68) warm
+ *   display Zen Kaku Gothic New · body Zen Kaku Gothic New · axes: dark / jp-gothic / warm
+ * nav: N6 newspaper masthead (knobs: issue=above, wordmark=2xl, rule=double)
+ * hero: H1 marquee (knobs: size=xl, alignment=left-bias, underlay=rule-below)
+ * section head: S3 sticky pinned · feature: F4 step sequence (knobs: 01/02/03, vertical, connector=line)
+ * proof: T3 single huge statement (unattributed — 引用の捏造をしない)
+ * cta: C1 outlined chip (knobs: rectangular, spacious, arrow) · footer: Ft4 dense colophon
+ * enrichment: Tier-B hand-built SVG 街道図
+ * tone: editorial · audience: 40代以上・味と背景を吟味する層
+ * motion: stage-rule-sweep · sticky-label · chip-outline (3)
+ * pre-emit critique: P5 H5 E5 S5 R4 V5
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; overflow-x: clip; }
+
+html {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: normal;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-feature-settings: "palt" 1;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+p { margin: 0; }
+ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
+
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+.bp { display: none; }
+@media (min-width: 48rem) { .bp { display: inline; } }
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.num { font-family: var(--font-label); font-variant-numeric: tabular-nums; }
+
+/* ── N6 · newspaper masthead ───────────────────────── */
+.mast {
+  border-bottom: 3px double var(--color-rule-2);
+  padding-block: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+.mast__issue {
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  margin-bottom: var(--space-sm);
+}
+.mast__mark {
+  display: inline-block;
+  font-size: clamp(1.5rem, 3.2vw + 0.6rem, var(--text-2xl));
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  font-feature-settings: "palt" 1;
+  text-decoration: none;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+/* ── H1 · marquee ──────────────────────────────────── */
+.hero {
+  padding-block: clamp(var(--space-3xl), 14vh, var(--space-4xl)) var(--space-3xl);
+}
+.hero__h {
+  font-size: var(--text-display);
+  font-weight: 900;
+  max-width: 16em;
+}
+.hero__rule {
+  margin-top: var(--space-2xl);
+  height: var(--rule-fine);
+  background: var(--color-rule-2);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-long) var(--ease-out);
+}
+.hero__rule.is-in { transform: scaleX(1); }
+
+.lede {
+  margin-top: var(--space-2xl);
+  max-width: var(--measure);
+  color: var(--color-ink-2);
+}
+.lede p + p { margin-top: var(--space-md); }
+
+/* ── Tier-B · 街道図 ───────────────────────────────── */
+.route { padding-block: var(--space-3xl); }
+.route__svg { width: 100%; height: auto; display: block; overflow: visible; }
+.route__line   { stroke: var(--color-rule-2); stroke-width: 1; fill: none; }
+.route__fade   { stroke: var(--color-rule); stroke-width: 1; fill: none; stroke-dasharray: 3 6; }
+.route__dot    { fill: var(--color-rule-2); }
+.route__dot--on{ fill: var(--color-accent); }
+.route__t {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  fill: var(--color-muted);
+}
+.route__t--on { fill: var(--color-accent); }
+.route__cap {
+  margin-top: var(--space-md);
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* ── twin timeline · F4 step sequence ──────────────── */
+.rhyme {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3xl);
+  padding-block: var(--section-gap);
+}
+@media (min-width: 56rem) {
+  .rhyme { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-2xl); }
+}
+
+/* S3 · sticky pinned label — タグは見出しの上に縦積み（左右2段組みにしない） */
+.era {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-paper);
+  padding-block: var(--space-md);
+  border-bottom: var(--rule-fine) solid var(--color-rule);
+  margin-bottom: var(--space-xl);
+}
+.era__k {
+  display: block;
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  margin-bottom: var(--space-2xs);
+}
+.era__h { font-size: var(--text-xl); font-weight: 700; }
+
+.stage { position: relative; padding-left: var(--space-xl); }
+.stage + .stage { margin-top: var(--space-2xl); }
+.stage::before {                       /* connector line */
+  content: "";
+  position: absolute;
+  left: 0.32em;
+  top: 0.4em;
+  bottom: calc(var(--space-2xl) * -1);
+  width: var(--rule-hair);
+  background: var(--color-rule);
+}
+.stage:last-child::before { display: none; }
+.stage__n {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  line-height: 2.2;
+}
+.stage__h { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-xs); }
+.stage__p { color: var(--color-ink-2); font-size: var(--text-base); max-width: 26em; }
+.stage__sweep {
+  margin-top: var(--space-md);
+  height: var(--rule-hair);
+  background: var(--color-rule-2);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-long) var(--ease-out);
+}
+.stage.is-in .stage__sweep { transform: scaleX(1); }
+
+.stage--end .stage__n { color: var(--color-accent); }
+.stage--end .stage__h { color: var(--color-accent); }
+
+.stage--never { opacity: 0.5; }
+.stage--never .stage__h { font-weight: 400; }
+
+/* ── T3 · single huge statement ────────────────────── */
+.stmt {
+  border-top: var(--rule-fine) solid var(--color-rule-2);
+  border-bottom: var(--rule-fine) solid var(--color-rule-2);
+  padding-block: var(--space-4xl);
+}
+.stmt__t {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.4vw + 0.7rem, 3rem);
+  line-height: var(--lh-snug);
+  font-feature-settings: "palt" 1;
+  max-width: 18em;
+}
+.stmt__after {
+  margin-top: var(--space-xl);
+  max-width: var(--measure);
+  color: var(--color-ink-2);
+}
+
+/* ── sections ──────────────────────────────────────── */
+.sec { padding-block: var(--section-gap); }
+.sec__title { font-size: var(--text-display-s); margin-bottom: var(--space-lg); }
+.sec__p { max-width: var(--measure); color: var(--color-ink-2); }
+.sec__p + .sec__p { margin-top: var(--space-md); }
+
+.facts { margin-top: var(--space-2xl); border-top: var(--rule-fine) solid var(--color-rule); }
+.facts__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xs);
+  padding-block: var(--space-md);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+@media (min-width: 40rem) {
+  .facts__row { grid-template-columns: 11em minmax(0, 1fr); gap: var(--space-lg); align-items: baseline; }
+}
+.facts__k { color: var(--color-muted); font-size: var(--text-base); }
+.facts__v { font-size: var(--text-base); }
+.facts__v--tbd { color: var(--color-muted); font-family: var(--font-label); }
+
+/* ── C1 · outlined chip ────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 48px;
+  padding-inline: var(--space-lg);
+  border: var(--rule-fine) solid var(--color-rule-2);
+  border-radius: var(--radius-pill);
+  color: var(--color-ink);
+  text-decoration: none;
+  font-size: var(--text-base);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: border-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out);
+}
+.chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.chip__a { transition: transform var(--dur-short) var(--ease-out); }
+.chip:hover .chip__a { transform: translateX(0.25em); }
+
+/* ── Ft4 · dense colophon ──────────────────────────── */
+.colo {
+  border-top: 3px double var(--color-rule-2);
+  padding-block: var(--space-2xl) var(--space-3xl);
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  line-height: 1.9;
+  color: var(--color-muted);
+}
+.colo b { color: var(--color-ink-2); font-weight: 500; }
+.colo a { color: var(--color-ink-2); white-space: nowrap; }
+.colo__block { max-width: 52em; }
+.colo__block + .colo__block { margin-top: var(--space-lg); }
+
+/* ── reveal ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 150ms !important;
+  }
+  .hero__rule, .stage__sweep { transform: scaleX(1); }
+  .era { position: static; }
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="mast__issue">日光御成道 岩槻宿 ／ さいたま市岩槻区</p>
+    <a class="mast__mark" href="#top">氷川ブリュワリー</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- H1 · marquee -->
+  <section class="hero wrap">
+    <h1 class="hero__h">日光へ<br class="bp">行くはずだった。</h1>
+    <div class="hero__rule" data-sweep></div>
+    <div class="lede">
+      <p>寛永年間、日光東照宮を造るために全国から工匠が集められた。岩槻は、江戸を出て最初の宿場だった。</p>
+      <p>何人かは、そこから先へ行かなかった。</p>
+    </div>
+  </section>
+
+  <!-- Tier-B · 街道図 -->
+  <section class="route wrap" aria-label="日光御成道の略図">
+    <svg class="route__svg" viewBox="0 0 640 72" role="img" aria-label="江戸から岩槻を経て日光へ向かう街道の略図。線は岩槻の先で薄くなる。">
+      <line class="route__line" x1="24" y1="40" x2="400" y2="40"/>
+      <line class="route__fade" x1="400" y1="40" x2="616" y2="40"/>
+      <circle class="route__dot" cx="24" cy="40" r="3"/>
+      <circle class="route__dot" cx="212" cy="40" r="3"/>
+      <circle class="route__dot--on" cx="400" cy="40" r="5"/>
+      <circle class="route__dot" cx="616" cy="40" r="3" opacity="0.4"/>
+      <text class="route__t" x="24" y="24" text-anchor="start">EDO</text>
+      <text class="route__t" x="212" y="24" text-anchor="middle">…</text>
+      <text class="route__t route__t--on" x="400" y="22" text-anchor="middle">IWATSUKI</text>
+      <text class="route__t" x="616" y="24" text-anchor="end" opacity="0.5">NIKKO</text>
+      <text class="route__t" x="400" y="60" text-anchor="middle">ここで止まる</text>
+    </svg>
+    <p class="route__cap">江戸 — 岩槻 — 日光。線は岩槻の先で薄くなる。</p>
+  </section>
+
+  <!-- 二重の時間軸 · F4 step sequence -->
+  <div class="wrap">
+    <div class="rhyme">
+
+      <div>
+        <div class="era">
+          <span class="era__k">01 — THEN</span>
+          <h2 class="era__h">寛永年間</h2>
+        </div>
+
+        <div class="stage" data-sweep>
+          <span class="stage__n num">01</span>
+          <h3 class="stage__h">日光へ発つ</h3>
+          <p class="stage__p">家光が東照宮の造営にあたって、全国から腕のいい工匠を集めた。</p>
+          <div class="stage__sweep"></div>
+        </div>
+
+        <div class="stage" data-sweep>
+          <span class="stage__n num">02</span>
+          <h3 class="stage__h">岩槻に泊まる</h3>
+          <p class="stage__p">日光御成道の宿場。江戸を出た工匠が、まずここで足を止めた。</p>
+          <div class="stage__sweep"></div>
+        </div>
+
+        <div class="stage stage--end" data-sweep>
+          <span class="stage__n num">03</span>
+          <h3 class="stage__h">帰らなかった</h3>
+          <p class="stage__p">桐があった。胡粉を溶く水がよかった。住みついた者が人形をつくりはじめ、それがおよそ370年続いている。</p>
+          <div class="stage__sweep"></div>
+        </div>
+
+        <div class="stage stage--never">
+          <span class="stage__n num">──</span>
+          <h3 class="stage__h">日光</h3>
+          <p class="stage__p">行かなかった。</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="era">
+          <span class="era__k">02 — NOW</span>
+          <h2 class="era__h">いま</h2>
+        </div>
+
+        <div class="stage" data-sweep>
+          <span class="stage__n num">01</span>
+          <h3 class="stage__h">大宮で十二年</h3>
+          <p class="stage__p">武蔵一宮氷川神社の参道そば、高鼻町。2014年からここで造っている。</p>
+          <div class="stage__sweep"></div>
+        </div>
+
+        <div class="stage" data-sweep>
+          <span class="stage__n num">02</span>
+          <h3 class="stage__h">岩槻を見に行く</h3>
+          <p class="stage__p">大宮から東へ。人形の町として370年やってきた場所。</p>
+          <div class="stage__sweep"></div>
+        </div>
+
+        <div class="stage stage--end" data-sweep>
+          <span class="stage__n num">03</span>
+          <h3 class="stage__h">建てる</h3>
+          <p class="stage__p">二つ目の醸造所を、岩槻に。今度は、こちらがよそから来る側です。</p>
+          <div class="stage__sweep"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- T3 · single huge statement -->
+  <section class="stmt" aria-label="ステートメント">
+    <div class="wrap">
+      <p class="stmt__t">一泊のつもりだった人が、<br class="bp">そのまま三百七十年いる。</p>
+      <p class="stmt__after">通り道が目的地になった町に、通りかかった醸造所が居つこうとしている。同じことを、もう一度やるだけです。</p>
+    </div>
+  </section>
+
+  <!-- いま書けること -->
+  <section class="sec wrap" aria-labelledby="s-facts">
+    <h2 class="sec__title" id="s-facts">まだ建っていません</h2>
+    <p class="sec__p">着工前です。決まっていないことのほうが多いので、書けることだけ書きます。</p>
+
+    <dl class="facts">
+      <div class="facts__row"><dt class="facts__k">醸造所</dt><dd class="facts__v">さいたま市岩槻区</dd></div>
+      <div class="facts__row"><dt class="facts__k">運営</dt><dd class="facts__v">株式会社 氷川ブリュワリー</dd></div>
+      <div class="facts__row"><dt class="facts__k">仕込み水</dt><dd class="facts__v">上水道</dd></div>
+      <div class="facts__row"><dt class="facts__k">着工</dt><dd class="facts__v facts__v--tbd">未定</dd></div>
+      <div class="facts__row"><dt class="facts__k">開業</dt><dd class="facts__v facts__v--tbd">未定</dd></div>
+      <div class="facts__row"><dt class="facts__k">第一号の銘柄</dt><dd class="facts__v facts__v--tbd">未定</dd></div>
+    </dl>
+
+    <p class="sec__p" style="margin-top: var(--space-xl);">
+      岩槻の人形は、この土地の水がよかったから生まれました。うちの仕込み水は市の水です。井戸は使っていない。継ぐのは水ではなく、居つくほうです。
+    </p>
+
+    <p style="margin-top: var(--space-2xl);">
+      <a class="chip" href="https://hikawa-brewery.com/" rel="noopener">
+        大宮の醸造所を訪ねる<span class="chip__a" aria-hidden="true">→</span>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="colo">
+  <div class="wrap">
+    <div class="colo__block">
+      <b>株式会社 氷川ブリュワリー</b> ／ さいたま市大宮区高鼻町 1-36-1 ／
+      JR大宮駅から徒歩約7分、武蔵一宮氷川神社の参道そば ／ 2014年開業 ／
+      <a href="https://hikawa-brewery.com/" rel="noopener">hikawa-brewery.com</a>
+    </div>
+    <div class="colo__block">
+      <b>岩槻醸造所</b> ／ さいたま市岩槻区 ／ 着工前 ／ 詳細が決まり次第このページを更新します。
+    </div>
+    <div class="colo__block">
+      <b>出典</b> ／ 岩槻の人形の由来、桐塑頭・胡粉・「およそ370年」の記述は
+      <a href="https://doll.or.jp/about/" rel="noopener">岩槻人形協同組合</a>による。
+      日光御成道および岩槻宿の記述は同組合の説明にもとづく。掲載前に一次資料での確認を推奨。
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-sweep]');
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
+  targets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

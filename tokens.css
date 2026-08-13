@@ -1,0 +1,143 @@
+/* Hallmark · tokens · 氷川ブリュワリー 岩槻醸造所 LP
+ * genre: editorial · JP-first typography
+ * themes:
+ *   atelier — 案1 胡粉   · paper: light (94%) · display: roman-serif (明朝) · accent: warm 40°
+ *   andon   — 案2 一泊目 · paper: dark  (14%) · display: jp-gothic          · accent: warm 68°
+ * 差分2軸（paper band / display style）。純白・純黒は不使用。
+ */
+
+:root {
+  /* ── spacing · 4pt scale ─────────────────────────── */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 10rem;
+
+  --section-gap: 6.5rem;
+
+  /* ── page ────────────────────────────────────────── */
+  --page-max:    64rem;
+  --page-gutter: clamp(1.25rem, 5vw, 3rem);
+  --measure:     34em;          /* 和文は ch ではなく em で測る */
+  --rule-hair:   0.5px;
+  --rule-fine:   1px;
+
+  /* ── motion ──────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long:  420ms;
+
+  /* ── 和文の行間 · 欧文より広く取る ─────────────────── */
+  --lh-tight:   1.24;
+  --lh-snug:    1.45;
+  --lh-normal:  1.85;
+  --lh-relaxed: 1.95;
+
+  --z-sticky: 200;
+  --z-nav:    300;
+
+  /* ── ビールの液色 · 銘柄の識別に使う ───────────────── */
+  --beer-golden: oklch(80% 0.140 85);
+  --beer-pale:   oklch(75% 0.150 76);
+  --beer-amber:  oklch(62% 0.150 55);
+  --beer-brown:  oklch(42% 0.100 45);
+  --beer-foam:   oklch(97% 0.012 85);
+}
+
+/* ──────────────────────────────────────────────────────
+   ATELIER — 案1「胡粉」
+   冷たい生成り紙 × 焦茶の墨。アクセントはほぼ墨。色で叫がない。
+   ────────────────────────────────────────────────────── */
+
+[data-theme="atelier"] {
+  --color-paper:      oklch(94% 0.005 60);
+  --color-paper-2:    oklch(91% 0.006 60);
+  --color-paper-3:    oklch(87% 0.008 55);
+  --color-rule:       oklch(78% 0.006 55);
+  --color-rule-2:     oklch(56% 0.008 50);
+  --color-muted:      oklch(46% 0.010 50);
+  --color-neutral:    oklch(28% 0.014 45);
+  --color-ink-2:      oklch(18% 0.020 40);
+  --color-ink:        oklch(12% 0.024 40);
+  --color-accent:     oklch(22% 0.060 40);
+  --color-accent-ink: oklch(94% 0.005 60);
+  --color-focus:      oklch(45% 0.130 60);
+
+  --font-display: "Shippori Mincho B1", "Playfair Display", "Hiragino Mincho ProN", serif;
+  --font-body:    "Zen Kaku Gothic New", "Hanken Grotesk", "Hiragino Sans", sans-serif;
+  --font-serif:   "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+  --font-label:   "IBM Plex Mono", ui-monospace, monospace;
+
+  --display-weight: 600;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-display:   clamp(2.25rem, 4.2vw + 0.9rem, 5.25rem);
+  --text-display-s: clamp(1.625rem, 2.4vw + 0.8rem, 2.75rem);
+
+  --tracking-display: 0.01em;
+  --tracking-tight:   0;
+  --tracking-label:   0.24em;
+
+  --radius-card: 0;
+  --radius-pill: 0;
+}
+
+/* ──────────────────────────────────────────────────────
+   ANDON — 案2「一泊目」
+   墨に寄せた濃茶の紙 × 生成りの字。琥珀は行灯であり、ビールの色。
+   ────────────────────────────────────────────────────── */
+
+[data-theme="andon"] {
+  --color-paper:      oklch(14% 0.012 55);
+  --color-paper-2:    oklch(18% 0.014 55);
+  --color-paper-3:    oklch(23% 0.016 50);
+  --color-rule:       oklch(30% 0.014 50);
+  --color-rule-2:     oklch(42% 0.016 50);
+  --color-muted:      oklch(58% 0.016 55);
+  --color-neutral:    oklch(72% 0.014 60);
+  --color-ink-2:      oklch(85% 0.012 65);
+  --color-ink:        oklch(94% 0.010 70);
+  --color-accent:     oklch(72% 0.145 68);
+  --color-accent-ink: oklch(14% 0.012 55);
+  --color-focus:      oklch(76% 0.150 68);
+
+  --font-display: "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  --font-body:    "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  --font-serif:   "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  --font-label:   "JetBrains Mono", ui-monospace, monospace;
+
+  --display-weight: 700;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-display:   clamp(2.375rem, 5vw + 0.9rem, 5.5rem);
+  --text-display-s: clamp(1.75rem, 2.6vw + 0.8rem, 3rem);
+
+  --tracking-display: -0.005em;
+  --tracking-tight:   0;
+  --tracking-label:   0.14em;
+
+  --page-max: 68rem;
+  --radius-card: 0;
+  --radius-pill: 0;
+}

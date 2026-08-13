@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="ja" data-theme="atelier">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>岩槻は、白にうるさい。— 氷川ブリュワリー 岩槻醸造所</title>
+<meta name="description" content="人形の肌を白くするために、この町はおよそ370年かけた。その町に、氷川ブリュワリーの醸造所を建てます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Split Studio · theme: Atelier
+ * nav: N9 edge-aligned minimal (knobs: CTA=outlined, wordmark=serif, padding=spacious)
+ * hero: H2 split diptych (knobs: ratio=6/6, right=photo, divider=negative-space)
+ * section head: S2 hanging · feature: F3 tabular spec sheet (knobs: 2-col, rule=every row)
+ * proof: T1 pull-quote + marginalia · cta: C3 typographic link · footer: Ft1 mast-headed
+ * enrichment: none — 写真は撮影待ちのラベル付きプレースホルダ
+ * tone: austere · audience: 40代以上・味と背景を吟味する層
+ * motion: half-crossfade · hairline-draw · underline-thicken (3)
+ * pre-emit critique: P5 H5 E4 S5 R5 V4
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  overflow-x: clip;              /* hidden ではなく clip */
+}
+
+/* 和文の禁則。gate 63 の overflow-wrap:anywhere は和文に当てない。 */
+html {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: normal;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
+  font-feature-settings: "palt" 0;   /* 本文は詰めない */
+}
+
+h1, h2, h3, .display, .stmt {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-feature-settings: "palt" 1;   /* 見出しは詰め組み */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+
+p { margin: 0; }
+ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
+
+.latin { font-family: var(--font-label); overflow-wrap: anywhere; min-width: 0; }
+
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+/* 意図した改行位置。狭い画面では効かせない。 */
+.bp { display: none; }
+@media (min-width: 48rem) { .bp { display: inline; } }
+
+/* ── focus ─────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  /* リングはアニメーションさせない */
+}
+
+/* ── N9 · edge-aligned minimal ─────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-xl);
+}
+.nav__mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-md);
+  letter-spacing: 0.08em;
+  font-feature-settings: "palt" 1;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--color-ink);
+}
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--space-md);
+  border: var(--rule-fine) solid var(--color-rule-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  white-space: nowrap;            /* 2行になるクリック文字を作らない */
+  text-decoration: none;
+  color: var(--color-ink);
+  transition: border-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out);
+}
+.nav__cta:hover { border-color: var(--color-ink); }
+
+/* ── hero · H2 split diptych 6/6 ───────────────────── */
+.hero { padding-block: var(--space-2xl) var(--space-4xl); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xl);
+  align-items: end;
+}
+@media (min-width: 60rem) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xl); }
+}
+.hero__h {
+  font-size: var(--text-display);
+  margin-bottom: var(--space-lg);
+}
+.hero__lede {
+  max-width: var(--measure);
+  color: var(--color-neutral);
+  font-size: var(--text-md);
+}
+.hero__lede + .hero__lede { margin-top: var(--space-md); }
+
+/* ── 写真プレースホルダ ─────────────────────────────── */
+.plate { display: block; }
+.plate__box {
+  aspect-ratio: 4 / 5;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--color-paper-2) 0 10px,
+      var(--color-paper-3) 10px 20px
+    );
+  border: var(--rule-hair) solid var(--color-rule);
+}
+.plate--wide .plate__box { aspect-ratio: 5 / 4; }
+.plate__cap {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  line-height: var(--lh-snug);
+}
+
+/* ── S2 · hanging section head ─────────────────────── */
+.sec { padding-block: var(--section-gap); }
+.sec__head { margin-bottom: var(--space-2xl); }
+.sec__title {
+  font-size: var(--text-display-s);
+}
+.sec__note {
+  margin-top: var(--space-sm);
+  max-width: var(--measure);
+  color: var(--color-muted);
+  font-size: var(--text-base);
+}
+
+/* ── diptych rows ──────────────────────────────────── */
+.dip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xl);
+  align-items: center;
+}
+@media (min-width: 60rem) {
+  .dip { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xl); }
+  .dip--rev .dip__text { order: 2; }
+}
+.dip + .dip { margin-top: var(--space-4xl); }
+.dip__text { max-width: var(--measure); }
+.dip__k {
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+.dip__h { font-size: var(--text-xl); margin-bottom: var(--space-md); }
+.dip__p + .dip__p { margin-top: var(--space-md); }
+.dip__p { color: var(--color-neutral); }
+
+/* ── 告白ブロック · ここだけ左右の対をやめる ─────────── */
+.confess {
+  background: var(--color-paper-2);
+  border-top: var(--rule-fine) solid var(--color-rule);
+  border-bottom: var(--rule-fine) solid var(--color-rule);
+  padding-block: var(--space-4xl);
+}
+.confess__body {
+  max-width: 30em;
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: var(--lh-relaxed);
+  font-feature-settings: "palt" 1;
+}
+.confess__body p + p { margin-top: var(--space-lg); }
+.confess__mark {
+  display: block;
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+}
+
+/* ── F3 · tabular spec sheet ───────────────────────── */
+.spec { border-top: var(--rule-fine) solid var(--color-rule-2); }
+.spec__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xs);
+  padding-block: var(--space-md);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+@media (min-width: 40rem) {
+  .spec__row { grid-template-columns: 14em minmax(0, 1fr); gap: var(--space-lg); align-items: baseline; }
+}
+.spec__k { color: var(--color-muted); font-size: var(--text-base); }
+.spec__v { font-size: var(--text-base); font-variant-numeric: tabular-nums; }
+.spec__v--tbd { color: var(--color-muted); font-family: var(--font-label); }
+.spec__foot {
+  margin-top: var(--space-md);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  max-width: var(--measure);
+}
+
+/* ── T1 · pull quote + marginalia ──────────────────── */
+.quote {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+}
+@media (min-width: 60rem) {
+  .quote { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: var(--space-3xl); }
+}
+.quote__q {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  line-height: var(--lh-snug);
+  font-feature-settings: "palt" 1;
+  color: var(--color-ink-2);
+}
+.quote__m {
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  line-height: var(--lh-snug);
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── C3 · typographic link ─────────────────────────── */
+.tlink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 44px;
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-rule-2);
+  transition: border-color var(--dur-short) var(--ease-out);
+}
+.tlink:hover { border-bottom-color: var(--color-ink); }
+.tlink__arrow { transition: transform var(--dur-short) var(--ease-out); }
+.tlink:hover .tlink__arrow { transform: translateX(0.25em); }
+
+/* ── Ft1 · mast-headed ─────────────────────────────── */
+.foot {
+  border-top: var(--rule-fine) solid var(--color-rule-2);
+  margin-top: var(--space-4xl);
+  padding-block: var(--space-2xl) var(--space-3xl);
+}
+.foot__mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-2xl);
+  font-feature-settings: "palt" 1;
+}
+.foot__tag {
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  max-width: var(--measure);
+}
+.foot__meta {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+.foot__meta a { color: inherit; white-space: nowrap; }
+.foot__src {
+  margin-top: var(--space-lg);
+  font-family: var(--font-label);
+  font-size: var(--text-xs);
+  line-height: var(--lh-snug);
+  color: var(--color-muted);
+  max-width: 48em;
+}
+.foot__src a { color: inherit; white-space: nowrap; }
+
+/* ── hairline that draws in ────────────────────────── */
+.rule {
+  height: var(--rule-fine);
+  background: var(--color-rule-2);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-long) var(--ease-out);
+}
+.is-in .rule, .rule.is-in { transform: scaleX(1); }
+
+/* ── reveal · 左右ハーフの時差クロスフェード ─────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-long) var(--ease-out),
+              transform var(--dur-long) var(--ease-out);
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+[data-reveal="b"] { transition-delay: 90ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 150ms !important;
+  }
+  [data-reveal] { transform: none; }
+  .rule { transform: scaleX(1); }
+}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="メイン">
+    <a class="nav__mark" href="#top">氷川ブリュワリー</a>
+    <a class="nav__cta" href="#taku">大宮の醸造所へ</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- H2 · split diptych -->
+  <section class="hero wrap">
+    <div class="hero__grid">
+      <div data-reveal="a">
+        <h1 class="hero__h">岩槻は、<br class="bp">白にうるさい。</h1>
+        <p class="hero__lede">人形の肌を白くするために、この町はおよそ370年かけた。</p>
+        <p class="hero__lede">その町に、氷川ブリュワリーの醸造所を建てます。</p>
+      </div>
+      <figure class="plate" data-reveal="b">
+        <div class="plate__box" role="img" aria-label="未彩色の桐塑頭（写真は撮影予定）"></div>
+        <figcaption class="plate__cap">撮影予定 — 未彩色の桐塑頭（きりそがしら）／撮影協力先は未定</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- S2 · hanging -->
+  <section class="sec wrap" aria-labelledby="s-rai">
+    <div class="sec__head" data-reveal="a">
+      <h2 class="sec__title" id="s-rai">白の来歴</h2>
+      <p class="sec__note">なぜこの町が人形の町になったのか。理由は二つあって、どちらも材料の話です。</p>
+    </div>
+
+    <div class="dip" data-reveal="a">
+      <div class="dip__text">
+        <span class="dip__k">01 — GOFUN</span>
+        <h3 class="dip__h">胡粉を溶く</h3>
+        <p class="dip__p">人形の頭に塗る胡粉は、貝殻を砕いた白い顔料です。これを溶かして塗り重ねると、あの肌になる。</p>
+        <p class="dip__p">岩槻の水は、この胡粉の溶解と発色に向いていた。白がきれいに出る土地だった、ということです。</p>
+      </div>
+      <figure class="plate">
+        <div class="plate__box" role="img" aria-label="胡粉（写真は撮影予定）"></div>
+        <figcaption class="plate__cap">撮影予定 — 胡粉</figcaption>
+      </figure>
+    </div>
+
+    <div class="dip dip--rev" data-reveal="a">
+      <div class="dip__text">
+        <span class="dip__k">02 — KIRI</span>
+        <h3 class="dip__h">桐の粉が出る</h3>
+        <p class="dip__p">岩槻の周りは桐の産地でした。桐箪笥を挽けば、大鋸屑が大量に出る。</p>
+        <p class="dip__p">その屑に生麩と膠を混ぜ、泥にして型に詰めて固める。桐塑頭という作り方です。捨てる材料が、人形の顔になった。</p>
+      </div>
+      <figure class="plate">
+        <div class="plate__box" role="img" aria-label="桐の大鋸屑（写真は撮影予定）"></div>
+        <figcaption class="plate__cap">撮影予定 — 桐の大鋸屑</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 告白ブロック · 全幅。ここだけ構造を破る -->
+  <section class="confess" aria-label="仕込み水について">
+    <div class="wrap">
+      <div class="confess__body" data-reveal="a">
+        <span class="confess__mark">仕込み水について</span>
+        <p>岩槻の人形は、この土地の水がよかったから生まれた。</p>
+        <p>正直に言うと、うちの仕込み水は市の水です。岩槻の井戸は使っていない。</p>
+        <p>継ぐのは水じゃない。白をきれいに出すことに、こだわり続ける態度のほうです。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- F3 · tabular spec sheet -->
+  <section class="sec wrap" aria-labelledby="s-now">
+    <div class="sec__head" data-reveal="a">
+      <h2 class="sec__title" id="s-now">いま決まっていること</h2>
+      <p class="sec__note">まだ建っていません。書けることだけ書きます。</p>
+    </div>
+
+    <dl class="spec" data-reveal="a">
+      <div class="spec__row"><dt class="spec__k">醸造所</dt><dd class="spec__v">さいたま市岩槻区</dd></div>
+      <div class="spec__row"><dt class="spec__k">運営</dt><dd class="spec__v">株式会社 氷川ブリュワリー（大宮区高鼻町 1-36-1）</dd></div>
+      <div class="spec__row"><dt class="spec__k">仕込み水</dt><dd class="spec__v">上水道</dd></div>
+      <div class="spec__row"><dt class="spec__k">第一号の銘柄</dt><dd class="spec__v spec__v--tbd">未定</dd></div>
+      <div class="spec__row"><dt class="spec__k">着工</dt><dd class="spec__v spec__v--tbd">未定</dd></div>
+      <div class="spec__row"><dt class="spec__k">開業</dt><dd class="spec__v spec__v--tbd">未定</dd></div>
+    </dl>
+    <p class="spec__foot">決まり次第、ここを書き換えます。</p>
+  </section>
+
+  <!-- T1 · pull quote + marginalia -->
+  <section class="sec wrap" aria-label="造り手の言葉">
+    <div class="rule" data-reveal="a" style="margin-bottom: var(--space-2xl);"></div>
+    <div class="quote" data-reveal="a">
+      <blockquote class="quote__q">
+        <p>［造り手コメント — 取材待ち］</p>
+      </blockquote>
+      <p class="quote__m">
+        ここには実際の言葉が入ります。<br>
+        代筆はしません。
+      </p>
+    </div>
+  </section>
+
+  <!-- C3 · typographic link -->
+  <section class="sec wrap" id="taku">
+    <p style="max-width: var(--measure); color: var(--color-neutral); margin-bottom: var(--space-lg);">
+      岩槻の醸造所はこれからですが、大宮の醸造所は今日も開いています。
+    </p>
+    <a class="tlink" href="https://hikawa-brewery.com/" rel="noopener">
+      大宮の醸造所を訪ねる<span class="tlink__arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__mark">氷川ブリュワリー</p>
+    <p class="foot__tag">武蔵一宮氷川神社の参道そばで2014年から。二つ目の醸造所を、岩槻に。</p>
+    <div class="foot__meta">
+      <span>さいたま市大宮区高鼻町 1-36-1</span>
+      <a href="https://hikawa-brewery.com/" rel="noopener">hikawa-brewery.com</a>
+    </div>
+    <p class="foot__src">
+      出典 — 岩槻の人形の由来および胡粉・桐塑頭の記述は
+      <a href="https://doll.or.jp/about/" rel="noopener">岩槻人形協同組合</a>
+      による。「およそ370年」は同組合の表記に従う。
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .rule');
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+  targets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

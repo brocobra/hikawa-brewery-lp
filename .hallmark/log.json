@@ -1,0 +1,43 @@
+[
+  {
+    "date": "2026-08-13",
+    "macrostructure": "Bento Grid",
+    "theme": "custom",
+    "theme_axes": "dark / jp-gothic / warm",
+    "vibe": "夜の街道、行灯、琥珀、土間",
+    "nav": "N6",
+    "footer": "Ft4",
+    "enrichment": "none (Tier-A 液色の帯)",
+    "brief": "氷川ブリュワリー 醸造所LP · 案B bento（両拠点・実データ）"
+  },
+  {
+    "date": "2026-08-13",
+    "macrostructure": "Catalogue",
+    "theme": "Atelier",
+    "theme_axes": "light / roman-serif / warm",
+    "nav": "N9",
+    "footer": "Ft1",
+    "enrichment": "Tier-A CSS 液色スウォッチ",
+    "brief": "氷川ブリュワリー 醸造所LP · 案A catalogue（両拠点・実データ）"
+  },
+  {
+    "date": "2026-08-13",
+    "macrostructure": "Narrative Workflow",
+    "theme": "custom",
+    "theme_axes": "dark / jp-gothic / warm",
+    "nav": "N6",
+    "footer": "Ft4",
+    "enrichment": "Tier-B SVG 街道図",
+    "brief": "旧版・岩槻の物語ページ（醸造所LPではないため差し替え）"
+  },
+  {
+    "date": "2026-08-13",
+    "macrostructure": "Split Studio",
+    "theme": "Atelier",
+    "theme_axes": "light / roman-serif / warm",
+    "nav": "N9",
+    "footer": "Ft1",
+    "enrichment": "none",
+    "brief": "旧版・胡粉の物語ページ（醸造所LPではないため差し替え）"
+  }
+]
